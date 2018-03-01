@@ -62,6 +62,57 @@ Instead of using automatic embeds, you can also manually create marketplace butt
 RareBitsExpress.createTokenButton(domNode, "tokenId");
 ```
 
+
+## Querying
+
+### Live Auctions
+
+``` js
+void getLiveAuctions(page : integer, callback : Function);
+```
+
+You can retrieve all of the live auctions for your DApp by using the getLiveAuctions function.
+
+``` js
+function handleAuctions(data) {
+  // Print all tokens
+  console.log(data.objects);
+}
+RareBitsExpress.getLiveAuctions(1, handleAuctions);
+```
+
+Data will contain an object with a list of ordered ids, page information and an array of tokens.
+
+Return format: 
+```  json
+{
+  "objects": [
+    {
+      "token_owner_address": "0xb2C3531F77ee0a7Ec7094A0bC87EF4a269E0BcFC",
+      "token_id": "3",
+      ... truncated ...
+      "active_auction": {
+        "ending_price": "20000000000000000",
+        "duration": "259200",
+        "current_price": "28015625000000000",
+        ... truncated ...
+      }
+    },
+  ],
+  "display_lists": {
+    "live_auction_items": {
+      "total_pages": 2,
+      "total_entries": 20,
+      "page_size": 10,
+      "page_number": 1,
+      "ids": [
+        "Mythereum-3",
+      ]
+    }
+  }
+}
+```
+
 ## Callbacks 
 
 We provide certain callbacks to let you customize the user experience even further. Simply add these arguments as additional properties for the RareBitsExpress.init() call.

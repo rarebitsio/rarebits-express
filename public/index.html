@@ -28,6 +28,12 @@
       .header a:hover {text-decoration: underline;}
       h1 {margin:0; margin-bottom: 6px; padding: 0;}
       h2 {opacity: 0.6; margin: 0; padding: 0; margin-bottom: 24px;}
+      #auctions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+      }
     </style>
 
   </head>
@@ -60,10 +66,38 @@
 
           async('https://rarebits.io/embed/express.js', function() {
             RareBitsExpress.init({contractAddress: "0xa67aac23549f4c672256b59b43ab0bacfcfcd498"});
+
+            // Get live auctions and do some simple rendering
+            function handleAuctions(data) {
+              var parentNode = document.getElementById("auctions");
+              for(var idx in data.objects) {
+                var token = data.objects[idx];
+
+                var container = document.createElement("div");
+                container.style.textAlign="center";
+                container.style.marginBottom = 24;
+                container.style.width = 266;
+                parentNode.appendChild(container);
+
+                var image = document.createElement("img");
+                image.src = token.image_url;
+                image.display = "block";
+                image.width = 250;
+                container.appendChild(image);
+
+                var button = document.createElement("div");
+                button.dataset.rarebits=1;
+                button.dataset.tokenId=token.token_id;
+                container.appendChild(button);
+              }
+            }
+
+            RareBitsExpress.getLiveAuctions(1, handleAuctions);
           });
         })();
       </script>
-   
+
+      <h2>Smart Auction Buttons</h2>
       <!-- Example predefined tag embed -->
       Token ID 740:
       <div data-rarebits="1" data-token-id="740" />
@@ -77,24 +111,12 @@
 
       <br />
       <br />
+    
+      <br/>
+      <br/>
 
-      <!-- Example predefined tag embed -->
-      Token ID 871:
-      <div data-rarebits="1" data-token-id="871" />
-
-      <br />
-      <br />
-
-      <!-- Example predefined tag embed -->
-      Token ID 921:
-      <div data-rarebits="1" data-token-id="921" />
-
-      <br />
-      <br />
-
-      <!-- Example predefined tag embed -->
-      Token ID 928:
-      <div data-rarebits="1" data-token-id="928" />
+      <h2>Live Auctions</h2>
+      <div id="auctions"></div>
 
 
     </div>
