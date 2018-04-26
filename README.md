@@ -1,4 +1,6 @@
 # RareBits Express: Embeddable Marketplace for ERC721 DApps
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdraftparty%2Frarebits-express.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdraftparty%2Frarebits-express?ref=badge_shield)
+
 
 We’re excited to provide a simple Javascript interface that allows any ERC721 to quickly deploy a set of powerful features to allow their users to easily buy and sell their ERC721 tokens.
 
@@ -204,3 +206,7 @@ Below is the stylesheet injected by RareBitsExpress. These styles can be overrid
 ```
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdraftparty%2Frarebits-express.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdraftparty%2Frarebits-express?ref=badge_large)
